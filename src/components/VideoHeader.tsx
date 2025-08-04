@@ -98,7 +98,6 @@ const VideoHeader: React.FC = () => {
         onError={handleVideoError}
       >
         <source src="/background-video.mp4" type="video/mp4" />
-        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
