@@ -3,7 +3,6 @@ import { Play, Pause } from 'lucide-react';
 import Logo from './Logo';
 import SocialIcons from './SocialIcons';
 import NewsTicker from './NewsTicker';
-import Navigation from './Navigation';
 
 const VideoHeader: React.FC = () => {
   const [isPlaying, setIsPlaying] = useState(true);
@@ -135,35 +134,34 @@ const VideoHeader: React.FC = () => {
       )}
 
       {/* Header Content */}
-      <div className="relative z-10 h-full flex flex-col ml-[140px]">
+      <div className="relative z-10 h-full flex flex-col ml-4 sm:ml-8 md:ml-16 lg:ml-[140px]">
         {/* Top Bar */}
-        <div className="flex justify-between items-start p-6 md:p-8 lg:p-12">
+        <div className="flex justify-between items-start p-4 sm:p-6 md:p-8 lg:p-12">
           {/* Logo */}
           <div className="flex-shrink-0 transform hover:scale-105 transition-transform duration-300">
             <Logo />
           </div>
 
           {/* Social Icons */}
-          <div className="flex-shrink-0 flex items-center h-20 md:h-24 lg:h-28 ml-auto">
+          <div className="flex-shrink-0 flex items-center h-16 sm:h-20 md:h-24 lg:h-28 ml-auto">
             <SocialIcons />
           </div>
         </div>
 
         {/* Main Content Area */}
-        <div className="flex-1 flex items-center justify-center pr-6 md:pr-8 lg:pr-12 relative">
+        <div className="flex-1 flex items-center justify-center pr-4 sm:pr-6 md:pr-8 lg:pr-12 relative">
           {/* Cycling Text Container */}
-          <div className="absolute right-6 md:right-8 lg:right-12 max-w-[900px]">
+          <div className="absolute right-4 sm:right-6 md:right-8 lg:right-12 max-w-[95vw] sm:max-w-[85vw] md:max-w-[75vw] lg:max-w-[900px]">
             <div className="relative">
               <div className={`transition-all duration-[1500ms] ease-in-out ${
                 isVisible ? 'opacity-100' : 'opacity-0'
               } ${isVisible ? 'transform translate-y-0' : 'transform translate-y-1'}`}>
                 <div className="text-right">
                   <h1 
-                    className="text-white text-6xl font-bold uppercase leading-tight px-4"
+                    className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold uppercase leading-tight px-2 sm:px-4"
                     style={{ 
                       fontFamily: 'Futura, "Futura PT", "Century Gothic", "Trebuchet MS", Arial, sans-serif',
-                      fontSize: '60px',
-                      lineHeight: '75px'
+                      lineHeight: '1.2'
                     }}
                   >
                     {typeof textSlides[currentTextIndex] === 'string' 
@@ -178,50 +176,50 @@ const VideoHeader: React.FC = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="flex justify-between items-end p-6 md:p-8 lg:p-12">
+        <div className="flex flex-col sm:flex-row justify-between items-center sm:items-end gap-4 sm:gap-0 p-4 sm:p-6 md:p-8 lg:p-12">
           {/* Play/Pause Button */}
           <button
             onClick={togglePlayPause}
-            className="bg-transparent border-2 border-white hover:border-white transition-all duration-300 ease-in-out group rounded-full flex items-center justify-between px-6 opacity-30 hover:opacity-100"
+            className="bg-transparent border-2 border-white hover:border-white transition-all duration-300 ease-in-out group rounded-full flex items-center justify-between px-3 sm:px-4 md:px-6 opacity-30 hover:opacity-100 touch-manipulation"
             style={{
-             width: '230px',
-              height: '40px',
+              width: 'auto',
+              minWidth: '160px',
+              maxWidth: '230px',
+              height: '44px',
               fontFamily: 'Futura, "Futura PT", "Century Gothic", "Trebuchet MS", Arial, sans-serif',
-              fontSize: '14px',
+              fontSize: 'clamp(10px, 2.5vw, 14px)',
               fontWeight: '500',
               color: 'white',
-              letterSpacing: '0.34em'
+              letterSpacing: 'clamp(0.1em, 0.5vw, 0.34em)'
             }}
             aria-label={isPlaying ? 'Pause video' : 'Play video'}
           >
-            <div className="flex-shrink-0 pr-2.5">
+            <div className="flex-shrink-0 pr-1 sm:pr-2 md:pr-2.5">
               {isPlaying ? (
-                <div className="w-4 h-4 bg-white rounded-full flex items-center justify-center">
+                <div className="w-3 sm:w-4 h-3 sm:h-4 bg-white rounded-full flex items-center justify-center">
                   <div className="flex space-x-0.5">
-                    <div className="w-0.5 h-2 bg-black"></div>
-                    <div className="w-0.5 h-2 bg-black"></div>
+                    <div className="w-0.5 h-1.5 sm:h-2 bg-black"></div>
+                    <div className="w-0.5 h-1.5 sm:h-2 bg-black"></div>
                   </div>
                 </div>
               ) : (
-                <div className="w-4 h-4 bg-white rounded-full flex items-center justify-center">
-                  <div className="w-0 h-0 border-l-[3px] border-l-black border-t-[2px] border-t-transparent border-b-[2px] border-b-transparent ml-0.5"></div>
+                <div className="w-3 sm:w-4 h-3 sm:h-4 bg-white rounded-full flex items-center justify-center">
+                  <div className="w-0 h-0 border-l-[2px] sm:border-l-[3px] border-l-black border-t-[1.5px] sm:border-t-[2px] border-t-transparent border-b-[1.5px] sm:border-b-[2px] border-b-transparent ml-0.5"></div>
                 </div>
               )}
             </div>
-            <span className="flex-1 text-right" style={{ color: 'inherit' }}>
+            <span className="flex-1 text-right whitespace-nowrap overflow-hidden" style={{ color: 'inherit' }}>
               {isPlaying ? 'PAUSE VIDEO' : 'PLAY VIDEO'}
             </span>
           </button>
 
           {/* News Ticker */}
-          <div className="flex-shrink-0 ml-auto">
+          <div className="flex-shrink-0 w-full sm:w-auto sm:ml-auto order-first sm:order-last">
             <NewsTicker />
           </div>
         </div>
       </div>
 
-      {/* Vertical Navigation */}
-      <Navigation />
     </div>
   );
 };
