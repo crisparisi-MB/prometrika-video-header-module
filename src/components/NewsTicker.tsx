@@ -72,21 +72,22 @@ const NewsTicker: React.FC = () => {
 
   return (
     <div 
-      className="rounded-full flex items-center justify-between px-6 text-right shadow-lg transition-all duration-300"
+      className="rounded-full flex items-center justify-between px-3 sm:px-4 md:px-6 text-right shadow-lg transition-all duration-300 max-w-full overflow-hidden"
       style={{
-        width: '925px',
-        height: '40px',
+        width: '100%',
+        maxWidth: 'min(925px, calc(100vw - 2rem))',
+        height: '44px',
         backgroundColor: '#F4B827',
-        paddingLeft: '24px',
-        paddingRight: '6px'
+        paddingLeft: 'clamp(12px, 3vw, 24px)',
+        paddingRight: 'clamp(6px, 1.5vw, 6px)'
       }}
     >
       <div className="flex items-center">
         <span 
-          className="uppercase tracking-wider"
+          className="uppercase tracking-wider whitespace-nowrap"
           style={{
             fontFamily: 'Futura, "Futura PT", "Century Gothic", "Trebuchet MS", Arial, sans-serif',
-            fontSize: '16px',
+            fontSize: 'clamp(12px, 3vw, 16px)',
             fontWeight: 'bold',
             color: '#312F48'
           }}
@@ -95,16 +96,16 @@ const NewsTicker: React.FC = () => {
         </span>
       </div>
       
-      <div className="flex-1 flex items-center justify-end overflow-hidden ml-6">
+      <div className="flex-1 flex items-center justify-end overflow-hidden ml-2 sm:ml-4 md:ml-6 min-w-0">
         <div className={`transition-all duration-[1500ms] ease-out ${
           isVisible ? 'opacity-100' : 'opacity-0'
-        } flex-1 mr-4`}>
+        } flex-1 mr-2 sm:mr-3 md:mr-4 min-w-0`}>
           <a
             href={newsItems[currentIndex].url} 
-            className="block text-left"
+            className="block text-left truncate"
             style={{
               color: '#312F48',
-              fontSize: '14px',
+              fontSize: 'clamp(11px, 2.5vw, 14px)',
               fontFamily: '"Roboto Slab", serif',
               fontWeight: '400'
             }}
@@ -115,16 +116,16 @@ const NewsTicker: React.FC = () => {
       </div>
       
       {/* Navigation Arrows */}
-      <div className="flex items-center space-x-3 flex-shrink-0">
+      <div className="flex items-center space-x-2 sm:space-x-3 flex-shrink-0">
         {/* Left Arrow */}
         <button
           onClick={goToPrevious}
-          className="w-8 h-8 rounded-full flex items-center justify-center hover:opacity-65 transition-opacity duration-200"
+          className="w-7 sm:w-8 h-7 sm:h-8 rounded-full flex items-center justify-center hover:opacity-65 transition-opacity duration-200 touch-manipulation"
           style={{ backgroundColor: '#312F48' }}
           aria-label="Previous news item"
         >
           <ChevronLeft 
-            size={16} 
+            size={14} 
             color="#F4B827" 
             strokeWidth={2.5}
           />
@@ -133,12 +134,12 @@ const NewsTicker: React.FC = () => {
         {/* Right Arrow */}
         <button
           onClick={goToNext}
-          className="w-8 h-8 rounded-full flex items-center justify-center hover:opacity-65 transition-opacity duration-200"
+          className="w-7 sm:w-8 h-7 sm:h-8 rounded-full flex items-center justify-center hover:opacity-65 transition-opacity duration-200 touch-manipulation"
           style={{ backgroundColor: '#312F48' }}
           aria-label="Next news item"
         >
           <ChevronRight 
-            size={16} 
+            size={14} 
             color="#F4B827" 
             strokeWidth={2.5}
           />
