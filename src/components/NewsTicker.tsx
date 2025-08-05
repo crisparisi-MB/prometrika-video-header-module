@@ -74,8 +74,7 @@ const NewsTicker: React.FC = () => {
     <div 
       className="rounded-full flex items-center justify-between px-3 sm:px-4 md:px-6 text-right shadow-lg transition-all duration-300 max-w-full overflow-hidden"
       style={{
-        width: '100%',
-        maxWidth: 'min(925px, calc(100vw - 2rem))',
+        width: 'min(925px, calc(100vw - 2rem))',
         height: '44px',
         backgroundColor: '#F4B827',
         paddingLeft: 'clamp(12px, 3vw, 24px)',
@@ -83,8 +82,7 @@ const NewsTicker: React.FC = () => {
       }}
     >
       <div className="flex items-center">
-        <span 
-          className="uppercase tracking-wider whitespace-nowrap"
+        <div className="uppercase tracking-wider whitespace-nowrap"
           style={{
             fontFamily: 'Futura, "Futura PT", "Century Gothic", "Trebuchet MS", Arial, sans-serif',
             fontSize: 'clamp(12px, 3vw, 16px)',
@@ -92,8 +90,9 @@ const NewsTicker: React.FC = () => {
             color: '#312F48'
           }}
         >
-          NEWS HIGHLIGHTS
-        </span>
+          <span className="sm:hidden">NEWS</span>
+          <span className="hidden sm:inline">NEWS HIGHLIGHTS</span>
+        </div>
       </div>
       
       <div className="flex-1 flex items-center justify-end overflow-hidden ml-2 sm:ml-4 md:ml-6 min-w-0">
